@@ -12,6 +12,7 @@
     "barryvdh/laravel-ide-helper": "^2.4",
     "fideloper/proxy": "~3.3",
     "germey/geetest": "^3.0",
+    "hieu-le/active": "^3.5",
     "laravel/framework": "5.5.*",
     "laravel/tinker": "~1.0",
     "spatie/laravel-permission": "^2.7"
