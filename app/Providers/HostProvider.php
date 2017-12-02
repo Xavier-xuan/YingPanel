@@ -2,12 +2,14 @@
 
 namespace App\Providers;
 
+use App\Contracts\Host;
+use App\Services\FrozenService;
 use Illuminate\Support\ServiceProvider;
 
-class AppServiceProvider extends ServiceProvider
+class HostProvider extends ServiceProvider
 {
     /**
-     * Bootstrap any application services.
+     * Bootstrap the application services.
      *
      * @return void
      */
@@ -17,14 +19,12 @@ class AppServiceProvider extends ServiceProvider
     }
 
     /**
-     * Register any application services.
+     * Register the application services.
      *
      * @return void
      */
     public function register()
     {
-        if (env('APP_DEBUG')) {
-            $this->app->register('VIACreative\SudoSu\ServiceProvider');
-        }
+        $this->app->bind(Host::class, FrozenService::class);
     }
 }

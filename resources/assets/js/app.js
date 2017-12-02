@@ -2,15 +2,19 @@ require('./bootstrap');
 
 const logoutUrl = '/logout';
 
-$('.logout').on('click', function () {
-    axios.post(logoutUrl)
-        .then(function () {
-            window.location.reload();
-        })
-});
+$(function () {
+    // 退出登录按钮
+    $('.logout').on('click', function () {
+        axios.post(logoutUrl)
+            .then(function () {
+                window.location.reload();
+            })
+    });
 
-$('.sidebar-item').on('click', function () {
-    href = $(this).attr('href');
-    if (!isEmpty(url))
-        window.location.href = href;
-});
+// 侧边栏跳转
+    $('.sidebar-item').on('click', function () {
+        let href = $(this).attr('href');
+        if (href !== null && href !== undefined)
+            window.location.href = href;
+    });
+})(jQuery);

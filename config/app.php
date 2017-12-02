@@ -181,6 +181,7 @@ return [
          * Custom Providers
          */
         Germey\Geetest\GeetestServiceProvider::class,
+        App\Providers\HostProvider::class
 
     ],
 

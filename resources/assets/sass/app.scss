@@ -27,7 +27,7 @@
 // scrollbar
 #sidebar::-webkit-scrollbar {
   width: 7px;
-  background-color: #eeeeee;
+  background-color: #ffffff;
 
 }
 
@@ -46,7 +46,6 @@
 
 #sidebar::-webkit-scrollbar-thumb:hover {
   background-color: #cccccc;
-  border-radius: 4px;
 }
 
 // sidebar items
@@ -73,6 +72,12 @@
 }
 
 #content{
-  margin-left: 120px;
+  margin-left: 150px;
+  margin-right: 32px;
   margin-top: 20px;
+  overflow: hidden;
+}
+
+.btn-danger .btn-warning{
+  border: none;
 }
