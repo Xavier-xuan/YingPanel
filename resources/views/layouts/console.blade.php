@@ -4,6 +4,7 @@
 
 <!-- Scripts -->
 <script src="{{ mix('js/app.js') }}"></script>
+<script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 <body>
 <div id="app">
     <div class="container-fluid">
@@ -14,7 +15,8 @@
     </div>
 
     <!-- Content -->
-    <div class="container" id="content">
+    <div class="container-fluid" id="content">
+        @include('common.alerts')
         @yield('content')
     </div>
 

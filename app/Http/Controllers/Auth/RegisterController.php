@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Facades\Setting;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -36,7 +37,11 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
+        if (!Setting::can('register'))
+            exit(502);
+
         $this->middleware('guest');
+
     }
 
     /**

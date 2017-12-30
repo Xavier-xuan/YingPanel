@@ -1,7 +1,5 @@
-@extends('layouts.admin')
-
-@section('content')
-    <div class="table-responsive">
+@extends('layouts.admin') @section('content')
+    <div class="table-responsive" style="margin-top: 10px;">
         @include('common.alerts')
         <table class="table table-hover ">
             <thead>
@@ -11,6 +9,8 @@
                 <th>IP</th>
                 <th>端口</th>
                 <th>服务器数量</th>
+                <th>状态</th>
+                <th></th>
                 <th>操作</th>
             </tr>
             </thead>
@@ -23,24 +23,33 @@
                         <th>{{$host->name}}</th>
                         <th>{{$host->ip}}</th>
                         <th>{{$host->port}}</th>
-                        <th>{{count($host->servers())}}</th>
+                        <th>{{$host->servers()->count()}}</th>
+                        <th><span class="label label-success">正常</span></th>
+                        <th></th>
                         <th>
                             <button class="btn btn-warning btn-sm">管理</button>
-                            <button class="btn btn-danger btn-sm">删除</button>
+                            <button del-host="{{ $host->id }}" class="btn btn-danger btn-sm">删除</button>
                         </th>
                     </tr>
                 @endforeach
                 </tbody>
+
+
             @endif
         </table>
-        @if(count($hosts) == 0)
-            <div style="margin: 4em auto;text-align: center">
-                这里毛都没有，赶快<a href="#" data-toggle="modal" data-target="#addHost">添加一台主机</a>吧！
-            </div>
-        @else
+        <div class="center-block">
+            {{ $hosts->links() }}
+        </div>
+        @if(count($hosts) > 0)
             <div style="text-align: right">
                 <a href="#" data-toggle="modal" data-target="#addHost">添加一台主机 >>></a>
             </div>
+        @else
+            <div style="margin: 4em auto;text-align: center">
+                这里毛都没有，赶快
+                <a href="#" data-toggle="modal" data-target="#addHost">添加一台主机</a> 吧！
+            </div>
+
         @endif
 
     <!-- 添加主机模态框 Start -->
@@ -55,8 +64,9 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">&times;</span></button>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                         <h4 class="modal-title" id="myModalLabel">添加主机</h4>
                     </div>
                     <div class="modal-body">
@@ -70,12 +80,10 @@
 
                                     <div class="col-md-6">
                                         <input id="name" type="text" class="form-control" name="name"
-                                               value="{{ old('name') }}" required autofocus>
-
-                                        @if ($errors->has('name'))
+                                               value="{{ old('name') }}" required autofocus> @if ($errors->has('name'))
                                             <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
+										<strong>{{ $errors->first('name') }}</strong>
+									</span>
                                         @endif
                                     </div>
                                 </div>
@@ -85,12 +93,10 @@
 
                                     <div class="col-md-6">
                                         <input id="ip" type="text" class="form-control" name="ip"
-                                               value="{{ old('ip') }}" required>
-
-                                        @if ($errors->has('ip'))
+                                               value="{{ old('ip') }}" required> @if ($errors->has('ip'))
                                             <span class="help-block">
-                                        <strong>{{ $errors->first('ip') }}</strong>
-                                    </span>
+										<strong>{{ $errors->first('ip') }}</strong>
+									</span>
                                         @endif
                                     </div>
                                 </div>
@@ -100,12 +106,10 @@
 
                                     <div class="col-md-6">
                                         <input id="port" type="number" min="0" class="form-control" name="port"
-                                               value="{{ old('port') }}" required>
-
-                                        @if ($errors->has('port'))
+                                               value="{{ old('port') }}" required> @if ($errors->has('port'))
                                             <span class="help-block">
-                                        <strong>{{ $errors->first('port') }}</strong>
-                                    </span>
+										<strong>{{ $errors->first('port') }}</strong>
+									</span>
                                         @endif
                                     </div>
                                 </div>
@@ -115,12 +119,11 @@
 
                                     <div class="col-md-6">
                                         <input id="verify_code" type="text" class="form-control" name="verify_code"
-                                               value="{{ old('verify_code') }}" required>
-
-                                        @if ($errors->has('verify_code'))
+                                               value="{{ old('verify_code') }}"
+                                               required> @if ($errors->has('verify_code'))
                                             <span class="help-block">
-                                        <strong>{{ $errors->first('verify_code') }}</strong>
-                                    </span>
+										<strong>{{ $errors->first('verify_code') }}</strong>
+									</span>
                                         @endif
                                     </div>
                                 </div>

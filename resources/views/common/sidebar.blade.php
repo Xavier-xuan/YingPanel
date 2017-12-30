@@ -6,7 +6,7 @@
         <span>总览</span>
     </div>
 
-    <div class="sidebar-item">
+    <div class="sidebar-item {{active_class(if_uri_pattern('server*'),'active')}}" href="{{route('server.list.my')}}">
         <i class="glyphicon glyphicon-cloud"></i>
         <span>服务器</span>
     </div>
@@ -17,7 +17,7 @@
     </div>
 
 
-    @if(Auth::user()->hasRole('admin'))
+    @if(Auth::user()->can('enter the backstage'))
         <div class="sidebar-item {{active_class(if_uri_pattern('admin*'),'active')}}" href="{{ route('admin.overview') }}">
             <i class="glyphicon glyphicon-cog"></i>
             <span>管理中心</span>

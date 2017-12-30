@@ -17,5 +17,14 @@
     "laravel-mix": "^1.0",
     "lodash": "^4.17.4",
     "vue": "^2.1.10"
+  },
+  "name": "YingPanel",
+  "version": "1.0.0",
+  "author": "Seth8277",
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "cn-bootstrap-datetimepicker": "^4.15.36",
+    "moment": "^2.20.1"
   }
 }

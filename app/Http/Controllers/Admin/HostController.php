@@ -42,12 +42,21 @@ class HostController extends Controller
 
     }
 
+    public function delete(Host $host)
+    {
+        if ($host->delete()) {
+            return back()->with('alert.successes', ['该主机已被删除！']);
+        }else {
+            return back()->with('alert.errors', ['删除失败']);
+        }
+    }
+
     protected function validator($data)
     {
         return Validator::make($data, [
             'name' => 'required|string|max:255',
             'ip' => 'required|unique:hosts',
-            'port' => 'required|max:65535|min:0',
+            'port' => 'required|between:0,65535',
             'verify_code' => 'required|string'
         ]);
     }

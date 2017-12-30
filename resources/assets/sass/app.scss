@@ -4,6 +4,8 @@
 @import "variables";
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
+// DateTimePicker
+@import "~cn-bootstrap-datetimepicker/src/sass/_bootstrap-datetimepicker";
 
 /**
  * 全局样式
@@ -13,12 +15,12 @@
  * Siderbar
  */
 #sidebar {
-  position: absolute;
+  position: fixed;
   bottom: 0px;
+  height: 100%;
   width: 128px;
   border-right: 1px solid #eeeeee;
   background-color: #ffffff;
-  height: 100%;
   overflow: auto;
   top: 0;
   padding: 2em 1em;

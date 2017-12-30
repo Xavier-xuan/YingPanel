@@ -5,6 +5,12 @@ namespace App\Models;
 use FrozenSdk\FrozenGo;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * App\Models\Host
+ *
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Server[] $servers
+ * @mixin \Eloquent
+ */
 class Host extends Model
 {
 

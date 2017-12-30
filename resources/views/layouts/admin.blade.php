@@ -4,6 +4,7 @@
 
 <!-- Scripts -->
 <script src="{{ mix('js/app.js') }}"></script>
+<script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
 
 <body>
 <div id="app">
@@ -22,13 +23,24 @@
                 <!-- 导航栏 Start -->
 
                 <ul class="nav nav-tabs">
-                    <li role="presentation" class="{{active_class(if_route('admin.overview'))}}">
-                        <a href="{{route('admin.overview')}}">平台总览</a>
-                    </li>
-                    <li role="presentation" class="{{active_class(if_route_pattern('admin.host.*'))}}">
-                        <a href="{{route('admin.host.list')}}">主机管理</a>
-                    </li>
-                    <li role="presentation"><a href="#">网站设置</a></li>
+                    @if(Auth::user()->can('view website overview'))
+                        <li role="presentation" class="{{active_class(if_route('admin.overview'))}}">
+                            <a href="{{route('admin.overview')}}">平台总览</a>
+                        </li>
+                    @endif
+
+                    @if(Auth::user()->can('manage all hosts'))
+
+                        <li role="presentation" class="{{active_class(if_route_pattern('admin.host.*'))}}">
+                            <a href="{{route('admin.host.list')}}">主机管理</a>
+                        </li>
+                    @endif
+                    @if(Auth::user()->can('manage website settings'))
+
+                        <li role="presentation" class="{{active_class(if_route_pattern('admin.setting.*'))}}">
+                            <a href="{{route('admin.setting.show')}}">网站设置</a>
+                        </li>
+                    @endif
                 </ul>
                 <!-- 导航栏 End -->
 

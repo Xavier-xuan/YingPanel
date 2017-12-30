@@ -98,7 +98,14 @@ class CreatePermissionTables extends Migration
     {
         // Create Permissions
         $adminPermissions = [
-            'manage hosts', 'manage users'
+            'view all servers',
+            'view website overview',
+            'add host',
+            'create server',
+            'manage all servers',
+            'manage all hosts',
+            'manage website settings',
+            'enter the backstage',
         ];
         foreach ($adminPermissions as $name) {
             Permission::create([
@@ -108,6 +115,7 @@ class CreatePermissionTables extends Migration
 
         // Create Roles & Admin User
         $adminRole = Role::create(['name' => 'admin']);
+        $userRole = Role::create(['name' => 'user']);
         $admin = User::create([
             'name' => 'admin',
             'email' => 'admin@local.com',

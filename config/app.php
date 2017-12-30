@@ -181,7 +181,8 @@ return [
          * Custom Providers
          */
         Germey\Geetest\GeetestServiceProvider::class,
-        App\Providers\HostProvider::class
+        App\Providers\HostProvider::class,
+        App\Providers\SettingProvider::class,
 
     ],
 
@@ -236,6 +237,7 @@ return [
          * Custom Aliases
          */
         'Geetest' => Germey\Geetest\Geetest::class,
+        'Setting' => App\Facades\Setting::class,
     ],
 
 ];

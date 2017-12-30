@@ -17,4 +17,17 @@ $(function () {
         if (href !== null && href !== undefined)
             window.location.href = href;
     });
-})(jQuery);
+
+    $('button[del-host]').on('click', function () {
+        let url = "/admin/host/delete/" + $(this).attr('del-host');
+        axios.post(url)
+             .then(function (response) {
+                 window.location.reload();
+             })
+    })
+
+    // 到期时间时间选择器初始化
+    $('input[name=expire]').datetimepicker({
+        format: "YYYY-MM-DD"
+    })
+});
