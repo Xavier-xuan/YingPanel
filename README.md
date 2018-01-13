@@ -62,3 +62,8 @@ php artisan key:generate
 php artisan migrate
 ```
 
+至此，安装就已经结束了。
+管理员帐号： admin@local.com
+管理员密码： admin
+请尽快修改以免发生意外！
+
